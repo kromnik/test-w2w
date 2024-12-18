@@ -1,0 +1,30 @@
+{
+  "doctors":
+  [
+    { 
+      "id": 1, 
+      "fullname": "Иванов Иван Иванович", 
+      "department": "Кардиология", 
+      "isHead": true 
+    },
+    { 
+      "id": 2, 
+      "fullname": "Сидоров Петр Петрович", 
+      "department": "Хирургия", 
+      "isHead": false 
+    }
+  ],
+  "nurses":
+  [
+    { 
+      "id": 1, 
+      "fullname": "Андреева Анна Андреевна", 
+      "department": "Кардиология" 
+    },
+    { 
+      "id": 2, 
+      "fullname": "Смирнова Мария Ивановна", 
+      "department": "Хирургия" 
+    }
+  ]
+}
