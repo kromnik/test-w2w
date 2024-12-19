@@ -45,8 +45,8 @@ const AddDoctorPopup: React.FC<AddDoctorPopupProps> = ({
               onClick={handleClose}
             ></button>
           </div>
-          <div className="modal-body">
-            <form>
+          <form onSubmit={handleSubmit}>
+            <div className="modal-body">
               <div className="form-group">
                 <label htmlFor="dataInput">ФИО</label>
                 <input
@@ -84,24 +84,23 @@ const AddDoctorPopup: React.FC<AddDoctorPopupProps> = ({
                 />
                 <label className="form-check-label">Заведующий</label>
               </div>
-            </form>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={handleClose}
-            >
-              Отмена
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleSubmit}
-            >
-              Добавить
-            </button>
-          </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={handleClose}
+              >
+                Отмена
+              </button>
+              <button
+                type="submit"
+                className="btn btn-primary"
+              >
+                Добавить
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -12,17 +12,19 @@ export const EditDoctorPopup: React.FC<EditDoctorFormProps> = ({
   editDoctor,
   doctor,
   showModal,
-  handleClose
+  handleClose,
 }) => {
-  const [fullname, setFullname] = useState('');
-  const [department, setDepartment] = useState<Department>(Department.Cardiology);
+  const [fullname, setFullname] = useState("");
+  const [department, setDepartment] = useState<Department>(
+    Department.Cardiology
+  );
   const [isHead, setIsHead] = useState(false);
 
   useEffect(() => {
-    setFullname(doctor.fullname)
-    setDepartment(doctor.department)
-    setIsHead(doctor.isHead)
-  }, [doctor])
+    setFullname(doctor.fullname);
+    setDepartment(doctor.department);
+    setIsHead(doctor.isHead);
+  }, [doctor]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,32 +35,26 @@ export const EditDoctorPopup: React.FC<EditDoctorFormProps> = ({
       isHead,
     };
     editDoctor(updateDoctor);
-    setFullname('');
+    setFullname("");
     setDepartment(Department.Cardiology);
     setIsHead(false);
     handleClose();
   };
 
   return (
-    <div
-      className={`modal ${showModal ? 'd-block' : 'd-none'}`}
-      tabIndex={-1}
-    >
+    <div className={`modal ${showModal ? "d-block" : "d-none"}`} tabIndex={-1}>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">
-              Редактировать данные
-            </h5>
+            <h5 className="modal-title">Редактировать данные</h5>
             <button
               type="button"
               className="btn-close"
               onClick={handleClose}
-            >
-            </button>
+            ></button>
           </div>
-          <div className="modal-body">
-            <form>
+          <form onSubmit={handleSubmit}>
+            <div className="modal-body">
               <div className="form-group">
                 <label htmlFor="dataInput">ФИО</label>
                 <input
@@ -92,28 +88,24 @@ export const EditDoctorPopup: React.FC<EditDoctorFormProps> = ({
                   className="form-check-input"
                   checked={isHead}
                   onChange={(e) => setIsHead(e.target.checked)}
-                  style={{marginRight: 10}}
+                  style={{ marginRight: 10 }}
                 />
                 <label className="form-check-label">Заведующий</label>
               </div>
-            </form>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={handleClose}
-            >
-              Отмена
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleSubmit}
-            >
-              Сохранить
-            </button>
-          </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={handleClose}
+              >
+                Отмена
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Сохранить
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

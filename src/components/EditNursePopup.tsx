@@ -12,15 +12,17 @@ export const EditNursePopup: React.FC<EditNurseFormProps> = ({
   editNurse,
   nurse,
   showModal,
-  handleClose
+  handleClose,
 }) => {
-  const [fullname, setFullname] = useState('');
-  const [department, setDepartment] = useState<Department>(Department.Cardiology);
+  const [fullname, setFullname] = useState("");
+  const [department, setDepartment] = useState<Department>(
+    Department.Cardiology
+  );
 
   useEffect(() => {
-    setFullname(nurse.fullname)
-    setDepartment(nurse.department)
-  }, [nurse])
+    setFullname(nurse.fullname);
+    setDepartment(nurse.department);
+  }, [nurse]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,31 +32,25 @@ export const EditNursePopup: React.FC<EditNurseFormProps> = ({
       department,
     };
     editNurse(updateNurse);
-    setFullname('');
+    setFullname("");
     setDepartment(Department.Cardiology);
     handleClose();
   };
 
   return (
-    <div
-      className={`modal ${showModal ? 'd-block' : 'd-none'}`}
-      tabIndex={-1}
-    >
+    <div className={`modal ${showModal ? "d-block" : "d-none"}`} tabIndex={-1}>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">
-              Редактировать данные
-            </h5>
+            <h5 className="modal-title">Редактировать данные</h5>
             <button
               type="button"
               className="btn-close"
               onClick={handleClose}
-            >
-            </button>
+            ></button>
           </div>
-          <div className="modal-body">
-            <form>
+          <form onSubmit={handleSubmit}>
+            <div className="modal-body">
               <div className="form-group">
                 <label htmlFor="dataInput">ФИО</label>
                 <input
@@ -82,24 +78,20 @@ export const EditNursePopup: React.FC<EditNurseFormProps> = ({
                   </option>
                 </select>
               </div>
-            </form>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={handleClose}
-            >
-              Отмена
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleSubmit}
-            >
-              Сохранить
-            </button>
-          </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={handleClose}
+              >
+                Отмена
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Сохранить
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
