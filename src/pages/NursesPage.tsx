@@ -16,7 +16,7 @@ const NursesPage: React.FC = () => {
       localStorage.setItem("nurses", JSON.stringify(initialDate.nurses));
       setNurses(initialDate.nurses as Nurse[]);
     }
-  }, [setNurses]);
+  }, []);
 
   const addNurse = useCallback(
     (nurse: Nurse) => {

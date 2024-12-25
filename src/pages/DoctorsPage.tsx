@@ -16,7 +16,7 @@ const DoctorsPage: React.FC = () => {
       localStorage.setItem("doctors", JSON.stringify(initialDate.doctors));
       setDoctors(initialDate.doctors as Doctor[]);
     }
-  }, [setDoctors]);
+  }, []);
 
   const addDoctor = useCallback(
     (doctor: Doctor) => {
